@@ -1,0 +1,4 @@
+*.o
+kernel.elf
+kernel.bin
+start.o

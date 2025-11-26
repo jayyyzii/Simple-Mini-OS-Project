@@ -1,4 +1,18 @@
-[translate:*.o]
-[translate:kernel.elf]
-[translate:kernel.bin]
-[translate:start.o]
+# Build artifacts
+build/
+iso/
+minios.iso
+
+# Object & binary files
+*.o
+*.bin
+*.elf
+
+# Temporary files
+*.log
+*.tmp
+
+# OS junk
+*.swp
+.DS_Store
+Thumbs.db

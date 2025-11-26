@@ -1,4 +1,4 @@
-*.o
-kernel.elf
-kernel.bin
-start.o
+[translate:*.o]
+[translate:kernel.elf]
+[translate:kernel.bin]
+[translate:start.o]

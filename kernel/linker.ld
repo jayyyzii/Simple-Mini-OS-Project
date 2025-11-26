@@ -2,8 +2,24 @@ ENTRY(_start)
 
 SECTIONS {
   . = 1M;
-  .text : { *(.text*) }
-  .rodata : { *(.rodata*) }
-  .data : { *(.data*) }
-  .bss : { *(.bss*) }
+
+  .multiboot :
+  {
+    KEEP(*(.multiboot))
+  }
+
+  .text :
+  {
+    *(.text*)
+  }
+
+  .data :
+  {
+    *(.data*)
+  }
+
+  .bss :
+  {
+    *(.bss*)
+  }
 }

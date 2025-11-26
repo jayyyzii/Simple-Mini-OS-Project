@@ -1,9 +1,27 @@
-void kernel_main() {
-    char *vga = (char*)0xb8000;
-    vga[0] = 'O';
-    vga[1] = 0x0F;
-    vga[2] = 'S';
-    vga[3] = 0x0F;
+#define VGA_ADDRESS 0xB8000
+#define VGA_WIDTH 80
+#define WHITE_ON_BLACK 0x0F
 
-    while(1) { }
+void clear_screen() {
+    volatile char* vga = (volatile char*)VGA_ADDRESS;
+    for (int i = 0; i < VGA_WIDTH * 25; i++) {
+        vga[i * 2] = ' ';
+        vga[i * 2 + 1] = WHITE_ON_BLACK;
+    }
+}
+
+void print(const char* str) {
+    volatile char* vga = (volatile char*)VGA_ADDRESS;
+    int i = 0;
+    while (str[i]) {
+        vga[i * 2] = str[i];
+        vga[i * 2 + 1] = WHITE_ON_BLACK;
+        i++;
+    }
+}
+
+void kernel_main() {
+    clear_screen();
+    print("MiniOS is alive");
+    while (1) { }
 }

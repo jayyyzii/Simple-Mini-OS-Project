@@ -232,7 +232,7 @@ Compare hasil & speed.
 # PEMBAGIAN TUGAS KELOMPOK
 
 *1. Desain kernel dan Diagram* :
-Deskripsi adalah *Membuat desain arsitektur kernel dan diagramnya.*
+Deskripsi : *Membuat desain arsitektur kernel dan diagramnya.*
 
 1. Naufal
 2. Totti
@@ -240,7 +240,7 @@ Deskripsi adalah *Membuat desain arsitektur kernel dan diagramnya.*
 4. Davar
 
 *2. Scheduler Design & Coding* :
-Deskripsi adalah *Membuat scheduler (round robin / priority queue)*
+Deskripsi : *Membuat scheduler (round robin / priority queue)*
 
 1. Salman
 2.zaidan

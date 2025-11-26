@@ -1,7 +1,7 @@
 # Build artifacts
 build/
 iso/
-minios.iso
+*.iso
 
 # Object & binary files
 *.o

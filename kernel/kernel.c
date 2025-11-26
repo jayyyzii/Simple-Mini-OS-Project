@@ -22,6 +22,6 @@ void print(const char* str) {
 
 void kernel_main() {
     clear_screen();
-    print("MiniOS is alive");
+    print("hello world, lorem ipsum, gacor kang");
     while (1) { }
 }

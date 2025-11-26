@@ -229,7 +229,7 @@ Compare hasil & speed.
 * Benchmark & analisis (20%)
 * Presentasi (10%)
 
-# PEMBAGIAN TUGAS KELOMPOK
+# PEMBAGIAN TUGAS KELOMPOK 1 OAK
 
 *1. Desain kernel dan Diagram* :
 Deskripsi : *Membuat desain arsitektur kernel dan diagramnya.*
@@ -275,3 +275,5 @@ Deksripsi : *Menjalankan program di mini OS dan OS modern, ukur metric*
 
 1. Davar
 2. Nova
+
+# DEADLINE :  15 Desember 2025

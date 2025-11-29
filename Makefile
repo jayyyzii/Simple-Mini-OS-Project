@@ -5,7 +5,7 @@ LD = ld
 CFLAGS  = -m32 -ffreestanding -nostdlib -fno-pie -fno-stack-protector
 ASFLAGS = -f elf32
 
-OBJS = build/boot.o build/kernel.o build/syscall.o build/keyboard.o
+OBJS = build/boot.o build/kernel.o build/driver.o build/syscall.o build/keyboard.o
 
 all: minios.iso
 
@@ -17,6 +17,9 @@ build/boot.o: kernel/boot.s | build
 
 build/kernel.o: kernel/kernel.c kernel/driver.h kernel/syscall.h | build
 	$(CC) $(CFLAGS) -c kernel/kernel.c -o build/kernel.o
+
+build/driver.o: kernel/driver.c kernel/driver.h | build
+	$(CC) $(CFLAGS) -c kernel/driver.c -o build/driver.o
 
 build/syscall.o: kernel/syscall.c kernel/syscall.h kernel/keyboard.h | build
 	$(CC) $(CFLAGS) -c kernel/syscall.c -o build/syscall.o
@@ -37,7 +40,7 @@ clean:
 	rm -rf build iso minios.iso
 
 run: minios.iso
-	 qemu-system-i386 -cdrom minios.iso -m 128M -boot d
+	qemu-system-i386 -cdrom minios.iso -m 128M -boot d
 
 .PHONY: all clean
 

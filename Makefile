@@ -1,15 +1,48 @@
-all:
+CC = gcc
+AS = nasm
+LD = ld
+
+CFLAGS  = -m32 -ffreestanding -nostdlib -fno-pie -fno-stack-protector
+ASFLAGS = -f elf32
+
+OBJS = build/boot.o build/kernel.o build/syscall.o build/keyboard.o
+
+all: minios.iso
+
+build:
 	mkdir -p build iso/boot/grub
-	nasm -f elf32 kernel/boot.s -o build/boot.o
-	gcc -m32 -c kernel/kernel.c -o build/kernel.o -ffreestanding -nostdlib -fno-pie
-	ld -m elf_i386 -T kernel/linker.ld -o build/kernel.bin build/boot.o build/kernel.o
 
-	cp build/kernel.bin iso/boot/
-	cp boot/grub/grub.cfg iso/boot/grub/
+build/boot.o: kernel/boot.s | build
+	$(AS) $(ASFLAGS) kernel/boot.s -o build/boot.o
+
+build/kernel.o: kernel/kernel.c kernel/driver.h kernel/syscall.h | build
+	$(CC) $(CFLAGS) -c kernel/kernel.c -o build/kernel.o
+
+build/syscall.o: kernel/syscall.c kernel/syscall.h kernel/keyboard.h | build
+	$(CC) $(CFLAGS) -c kernel/syscall.c -o build/syscall.o
+
+build/keyboard.o: kernel/keyboard.c kernel/keyboard.h | build
+	$(CC) $(CFLAGS) -c kernel/keyboard.c -o build/keyboard.o
+
+build/kernel.bin: $(OBJS) kernel/linker.ld
+	$(LD) -m elf_i386 -T kernel/linker.ld -o build/kernel.bin $(OBJS)
+
+minios.iso: build/kernel.bin
+	mkdir -p iso/boot/grub
+	cp build/kernel.bin iso/boot/kernel.bin
+	echo 'set timeout=0'                 >  iso/boot/grub/grub.cfg
+	echo 'set default=0'                >> iso/boot/grub/grub.cfg
+	echo 'menuentry "MiniOS" {'         >> iso/boot/grub/grub.cfg
+	echo '  multiboot /boot/kernel.bin' >> iso/boot/grub/grub.cfg
+	echo '  boot'                       >> iso/boot/grub/grub.cfg
+	echo '}'                            >> iso/boot/grub/grub.cfg
 	grub2-mkrescue -o minios.iso iso
-
-run:
-	qemu-system-i386 -cdrom minios.iso -vga std
 
 clean:
 	rm -rf build iso minios.iso
+
+run: minios.iso
+	qemu-system-i386 -cdrom minios.iso -m 128M -boot d
+
+.PHONY: all clean
+

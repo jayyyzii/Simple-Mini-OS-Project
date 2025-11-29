@@ -1,6 +1,7 @@
 // kernel/kernel.c
 #include "driver.h"
 #include "syscall.h"
+#include "reboot.h"
 #include <stdint.h>
 
 // Membaca integer desimal dari input (meng-echo tiap karakter).
@@ -141,8 +142,12 @@ done:
         sys_print("\ntotal_reads  : "); sys_print_dec((uint32_t)st.total_reads);
         sys_print("\nio_ticks     : "); sys_print_dec((uint32_t)st.total_io_time);
         sys_print("\n");
-        sys_print("\n[DONE] Kernel idle.\n");
     }
+
+    sys_print("\nBenchmark selesai.\n");
+    sys_print("Press any key to force quit...\n");
+    sys_read();    // baca 1 karakter apa saja
+    reboot_qemu();
 
     while (1) { }
 }

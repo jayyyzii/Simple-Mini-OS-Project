@@ -8,14 +8,10 @@ static unsigned char inb(unsigned short port) {
 
 char keyboard_getchar() {
     unsigned char scancode;
-
     while (1) {
         while (!(inb(0x64) & 1));
         scancode = inb(0x60);
-
-        if (scancode & 0x80)
-            continue;
-
+        if (scancode & 0x80) continue;
         switch (scancode) {
             case 0x1E: return 'a';
             case 0x30: return 'b';
@@ -48,4 +44,3 @@ char keyboard_getchar() {
         }
     }
 }
-

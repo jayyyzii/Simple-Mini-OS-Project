@@ -1,55 +1,37 @@
 #include "syscall.h"
+#include "driver.h"
+#include "keyboard.h"
 
-#define VGA_ADDRESS 0xB8000
-#define VGA_WIDTH   80
-#define VGA_HEIGHT  25
-#define WHITE_ON_BLACK 0x0F
-
-static int cursor_x = 0;
-static int cursor_y = 0;
-
-void clear_screen() {
-    volatile char* vga = (volatile char*)VGA_ADDRESS;
-    for (int i = 0; i < VGA_WIDTH * VGA_HEIGHT; i++) {
-        vga[i * 2]     = ' ';
-        vga[i * 2 + 1] = WHITE_ON_BLACK;
-    }
-    cursor_x = 0;
-    cursor_y = 0;
+void sys_clear_screen(void) {
+    driver_clear_screen();
 }
 
-static void kprint(const char* str) {
-    volatile char* vga = (volatile char*)VGA_ADDRESS;
-
-    for (int i = 0; str[i]; i++) {
-        if (str[i] == '\n') {
-            cursor_x = 0;
-            cursor_y++;
-        } else {
-            int index = (cursor_y * VGA_WIDTH + cursor_x) * 2;
-            vga[index]     = str[i];
-            vga[index + 1] = WHITE_ON_BLACK;
-            cursor_x++;
-        }
-
-        if (cursor_x >= VGA_WIDTH) {
-            cursor_x = 0;
-            cursor_y++;
-        }
-
-        if (cursor_y >= VGA_HEIGHT) {
-            cursor_y = 0; // bisa dikembangkan jadi scroll
-        }
-    }
+void sys_print(const char *s) {
+    driver_write(s);
 }
 
-void sys_print(const char* str) {
-    kprint(str);
+void sys_print_dec(uint32_t v) {
+    driver_write_dec(v);
 }
 
-extern char keyboard_getchar();
-
-char sys_read() {
+char sys_read(void) {
     return keyboard_getchar();
 }
 
+int sys_write_block(int block_index, const uint8_t *buf, uint32_t size) {
+    if (size != BLOCK_SIZE) return -1;
+    return io_write_block(block_index, buf);
+}
+
+int sys_read_block(int block_index, uint8_t *buf, uint32_t size) {
+    if (size != BLOCK_SIZE) return -1;
+    return io_read_block(block_index, buf);
+}
+
+uint32_t sys_time_us(void) {
+    return driver_time_us();
+}
+
+DeviceStatus sys_get_status(void) {
+    return driver_status();
+}

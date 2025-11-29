@@ -19,7 +19,7 @@ SECTIONS {
   }
 
   .data :
-  {
+  { 
     *(.data*)
   }
 

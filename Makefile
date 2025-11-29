@@ -30,19 +30,14 @@ build/kernel.bin: $(OBJS) kernel/linker.ld
 minios.iso: build/kernel.bin
 	mkdir -p iso/boot/grub
 	cp build/kernel.bin iso/boot/kernel.bin
-	echo 'set timeout=10'                 >  iso/boot/grub/grub.cfg
-	echo 'set default=0'                >> iso/boot/grub/grub.cfg
-	echo 'menuentry "MiniOS" {'         >> iso/boot/grub/grub.cfg
-	echo '  multiboot /boot/kernel.bin' >> iso/boot/grub/grub.cfg
-	echo '  boot'                       >> iso/boot/grub/grub.cfg
-	echo '}'                            >> iso/boot/grub/grub.cfg
+	cp boot/grub/grub.cfg iso/boot/grub/grub.cfg
 	grub-mkrescue -o minios.iso iso || grub2-mkrescue -o minios.iso iso
 
 clean:
 	rm -rf build iso minios.iso
 
 run: minios.iso
-	qemu-system-i386 -cdrom minios.iso -m 128M -boot d
+	 qemu-system-i386 -cdrom minios.iso -m 128M -boot d
 
 .PHONY: all clean
 

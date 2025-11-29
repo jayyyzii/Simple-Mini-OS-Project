@@ -10,6 +10,18 @@ static const uint8_t VGA_ATTR = 0x0F;
 static void putchar_at(char c, int row, int col) {
     VGA_BUFFER[row * 80 + col] = ((uint16_t)VGA_ATTR << 8) | (uint8_t)c;
 }
+static void scroll() {
+    // pindahkan semua baris ke atas
+    for (int row = 1; row < 25; row++) {
+        for (int col = 0; col < 80; col++) {
+            VGA_BUFFER[(row - 1) * 80 + col] = VGA_BUFFER[row * 80 + col];
+        }
+    }
+    // kosongkan baris terakhir
+    for (int col = 0; col < 80; col++) {
+        VGA_BUFFER[(24 * 80) + col] = ((uint16_t)VGA_ATTR << 8) | ' ';
+    }
+}
 
 static void vga_putc(char c) {
     if (c == '\n') {
@@ -23,8 +35,14 @@ static void vga_putc(char c) {
             cursor_row++;
         }
     }
-    if (cursor_row >= 25) cursor_row = 0; /* simple wrap, no scroll */
+
+    // if out of screen → scroll
+    if (cursor_row >= 25) {
+        scroll();
+        cursor_row = 24;
+    }
 }
+
 
 void driver_clear_screen(void) {
     for (int i = 0; i < 80*25; i++) {

@@ -11,8 +11,22 @@ char keyboard_getchar() {
     while (1) {
         while (!(inb(0x64) & 1));
         scancode = inb(0x60);
-        if (scancode & 0x80) continue;
+        if (scancode & 0x80)
+            continue;
         switch (scancode) {
+            // ==== DIGIT (Row 1) ====
+            case 0x02: return '1';
+            case 0x03: return '2';
+            case 0x04: return '3';
+            case 0x05: return '4';
+            case 0x06: return '5';
+            case 0x07: return '6';
+            case 0x08: return '7';
+            case 0x09: return '8';
+            case 0x0A: return '9';
+            case 0x0B: return '0';
+
+            // ==== ALPHABET ====
             case 0x1E: return 'a';
             case 0x30: return 'b';
             case 0x2E: return 'c';
@@ -39,7 +53,13 @@ char keyboard_getchar() {
             case 0x2D: return 'x';
             case 0x15: return 'y';
             case 0x2C: return 'z';
-            case 0x39: return ' ';
+
+            // ==== SYMBOLS minimal (optional) ====
+            case 0x39: return ' ';   // space
+            case 0x0C: return '-';   // minus
+            case 0x0D: return '=';
+
+            // ==== ENTER ====
             case 0x1C: return '\n';
         }
     }

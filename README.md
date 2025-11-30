@@ -1,17 +1,17 @@
 # Simple-Mini-OS-Project
 
-## 🧩 Gambaran Umum
+## [Overview]
 
-Simple-Mini-OS-Project adalah proyek untuk membuat *mini OS* dengan kernel sederhana yang mendukung driver simulasi dan system call minimal. Proyek ini dijalankan di `QEMU` emulator dan dapat digunakan untuk melakukan benchmark performa dibandingkan OS modern seperti Linux, Windows, atau Android.
+Simple-Mini-OS-Project adalah proyek untuk membuat *mini OS* dengan kernel sederhana yang mendukung driver simulasi dan system call minimal. Proyek ini dijalankan di `QEMU` emulator (32-bit; untuk mempermudah development) dan dapat digunakan untuk melakukan benchmark performa dibandingkan OS modern seperti Linux, Windows, atau Android.
 
 Fitur utama:
 
 - Driver simulasi untuk I/O virtual
 - System call minimal:
-  - `print` — menampilkan teks ke layar
-  - `read` — membaca input
-  - `allocate` — alokasi memori sederhana
-  - `create_task` — membuat task baru
+  - `print` —> menampilkan teks ke layar
+  - `read` —> membaca input
+  - `allocate` —> alokasi memori sederhana
+  - `create_task` —> membuat task baru
 - Logging hasil benchmark:
   - Waktu akses file
   - Total execution time
@@ -20,7 +20,7 @@ Fitur utama:
 
 ---
 
-## 📁 Struktur Folder
+## [Project Structure]
 
 Simple-Mini-OS-Project \
 ├── boot \
@@ -55,9 +55,17 @@ Simple-Mini-OS-Project \
 
 ---
 
-## ⚙️ Cara Build dan Jalankan
+## [How to Build]
 
-1. **Download Repository** \
+
+0. **Dependencies**:
+   - `GCC` & `NASM` — untuk compile kernel
+   - `LD` (linker) — untuk linking binary
+   - `QEMU` (32-bit) — untuk menjalankan mini-OS
+   - `GRUB/GRUB2` — membuat bootable ISO
+   - `xorriso` — membuat ISO bootable
+
+1. **Clone repository** \
    Buka terminal lalu jalankan:
    ```
    git clone https://github.com/muhammadrossiramadhan/Simple-Mini-OS-Project.git
@@ -76,14 +84,7 @@ Simple-Mini-OS-Project \
 
 ---
 
-📝 Notes
+### *Notes
 
-Mini-OS ini menggunakan GRUB sebagai bootloader.
-
-Struktur proyek modular untuk memudahkan pengembangan driver atau system call tambahan.
-
-🔧 Tools yang Digunakan (Dependency)
-
-- GCC & NASM — untuk compile kernel
-- LD (linker) — untuk linking binary
-- QEMU (32-bit) — untuk menjalankan mini-OS
+*Mini-OS ini menggunakan GRUB sebagai bootloader.
+Struktur proyek modular untuk memudahkan pengembangan driver atau system call tambahan.*

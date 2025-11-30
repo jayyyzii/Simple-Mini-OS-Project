@@ -57,7 +57,7 @@ Simple-Mini-OS-Project \
 
 ## ⚙️ Cara Build dan Jalankan
 
-1. **Download Repository**
+1. **Download Repository** \
    Buka terminal lalu jalankan:
    ```
    git clone https://github.com/muhammadrossiramadhan/Simple-Mini-OS-Project.git
@@ -68,11 +68,13 @@ Simple-Mini-OS-Project \
    cd Simple-Mini-OS-Project
    ```
 
-3. **Build kernel dan ISO**  
+3. **Build kernel dan ISO** \
    Pastikan `Makefile` sudah tersedia, lalu jalankan:
    ```
    make clean; make && make run
    ```
+
+---
 
 📝 Notes
 

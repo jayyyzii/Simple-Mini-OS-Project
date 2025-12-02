@@ -5,7 +5,7 @@ LD = ld
 CFLAGS  = -m32 -ffreestanding -nostdlib -fno-pie -fno-stack-protector
 ASFLAGS = -f elf32
 
-OBJS = build/boot.o build/kernel.o build/driver.o build/syscall.o build/keyboard.o
+OBJS = build/boot.o build/kernel.o build/driver.o build/syscall.o build/keyboard.o build/scheduler.o
 
 all: mini-os.iso
 
@@ -26,6 +26,9 @@ build/syscall.o: kernel/syscall.c kernel/syscall.h kernel/keyboard.h | build
 
 build/keyboard.o: kernel/keyboard.c kernel/keyboard.h | build
 	$(CC) $(CFLAGS) -c kernel/keyboard.c -o build/keyboard.o
+
+build/scheduler.o: kernel/scheduler.c kernel/scheduler.h | build
+	$(CC) $(CFLAGS) -c kernel/scheduler.c -o build/scheduler.o
 
 build/kernel.bin: $(OBJS) kernel/linker.ld
 	$(LD) -m elf_i386 -T kernel/linker.ld -o build/kernel.bin $(OBJS)

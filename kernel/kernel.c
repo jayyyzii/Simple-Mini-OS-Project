@@ -3,6 +3,8 @@
 #include "syscall.h"
 #include "reboot.h"
 #include <stdint.h>
+#include "scheduler.h"
+
 
 // Membaca integer desimal dari input (meng-echo tiap karakter).
 // Mengembalikan 0 jika input invalid atau kosong.

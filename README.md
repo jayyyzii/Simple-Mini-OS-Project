@@ -18,8 +18,6 @@ Fitur utama:
 - Menampilkan boot screen mini OS
 - Task execution sederhana
 
----
-
 ## [Project Structure]
 
 Simple-Mini-OS-Project \
@@ -61,9 +59,9 @@ Simple-Mini-OS-Project \
 │   └── program.exe\
 └── README.md
 
----
-
 ## [Direct Download]
+
+- [Latest release (v1.0.0)](https://github.com/muhammadrossiramadhan/Simple-Mini-OS-Project/releases/tag/v1.0.0 "Open Release")
 
 ## [Manual Build]
 

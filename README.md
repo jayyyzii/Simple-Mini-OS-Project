@@ -1,5 +1,38 @@
-# Simple-Mini-OS-Project
-
+```
+  /$$$$$$  /$$                         /$$                     
+ /$$__  $$|__/                        | $$                     
+| $$  \__/ /$$ /$$$$$$/$$$$   /$$$$$$ | $$  /$$$$$$            
+|  $$$$$$ | $$| $$_  $$_  $$ /$$__  $$| $$ /$$__  $$           
+ \____  $$| $$| $$ \ $$ \ $$| $$  \ $$| $$| $$$$$$$$           
+ /$$  \ $$| $$| $$ | $$ | $$| $$  | $$| $$| $$_____/           
+|  $$$$$$/| $$| $$ | $$ | $$| $$$$$$$/| $$|  $$$$$$$           
+ \______/ |__/|__/ |__/ |__/| $$____/ |__/ \_______/           
+                            | $$                               
+                            | $$                               
+                            |__/                               
+ /$$      /$$ /$$           /$$          /$$$$$$   /$$$$$$     
+| $$$    /$$$|__/          |__/         /$$__  $$ /$$__  $$    
+| $$$$  /$$$$ /$$ /$$$$$$$  /$$        | $$  \ $$| $$  \__/    
+| $$ $$/$$ $$| $$| $$__  $$| $$ /$$$$$$| $$  | $$|  $$$$$$     
+| $$  $$$| $$| $$| $$  \ $$| $$|______/| $$  | $$ \____  $$    
+| $$\  $ | $$| $$| $$  | $$| $$        | $$  | $$ /$$  \ $$    
+| $$ \/  | $$| $$| $$  | $$| $$        |  $$$$$$/|  $$$$$$/    
+|__/     |__/|__/|__/  |__/|__/         \______/  \______/     
+                                                               
+                                                               
+                                                               
+ /$$$$$$$                                               /$$    
+| $$__  $$                                             | $$    
+| $$  \ $$ /$$$$$$   /$$$$$$  /$$  /$$$$$$   /$$$$$$$ /$$$$$$  
+| $$$$$$$//$$__  $$ /$$__  $$|__/ /$$__  $$ /$$_____/|_  $$_/  
+| $$____/| $$  \__/| $$  \ $$ /$$| $$$$$$$$| $$        | $$    
+| $$     | $$      | $$  | $$| $$| $$_____/| $$        | $$ /$$
+| $$     | $$      |  $$$$$$/| $$|  $$$$$$$|  $$$$$$$  |  $$$$/
+|__/     |__/       \______/ | $$ \_______/ \_______/   \___/  
+                        /$$  | $$                              
+                       |  $$$$$$/                              
+                        \______/                                     
+```
 ## [Overview]
 
 Simple-Mini-OS-Project adalah proyek untuk membuat *mini OS* dengan kernel sederhana yang mendukung driver simulasi dan system call minimal. Proyek ini dijalankan di `QEMU` emulator (32-bit; untuk mempermudah development) dan dapat digunakan untuk melakukan benchmark performa dibandingkan OS modern seperti Linux, Windows, atau Android.
@@ -23,35 +56,43 @@ Fitur utama:
 ## [Project Structure]
 
 Simple-Mini-OS-Project \
-├── boot \
-│ └── grub \
-│ └── grub.cfg \
-├── build \
-│ ├── boot.o \
-│ ├── driver.o \
-│ ├── kernel.bin \
-│ ├── kernel.o \
-│ ├── keyboard.o \
-│ └── syscall.o \
-├── iso \
-│ └── boot \
-│ ├── grub \
-│ │ └── grub.cfg \
-│ └── kernel.bin \
-├── kernel \
-│ ├── boot.s \
-│ ├── driver.c \
-│ ├── driver.h \
-│ ├── kernel.c \
-│ ├── keyboard.c \
-│ ├── keyboard.h \
-│ ├── linker.ld \
-│ ├── reboot.h \
-│ ├── syscall.c \
-│ └── syscall.h \
-├── Makefile \
-├── minios.iso \
-└── README.md
+├── boot\
+│   └── grub\
+│       └── grub.cfg\
+├── build\
+│   ├── boot.o\
+│   ├── driver.o\
+│   ├── kernel.bin\
+│   ├── kernel.o\
+│   ├── keyboard.o\
+│   ├── scheduler.o\
+│   └── syscall.o\
+├── iso\
+│   └── boot\
+│       ├── grub\
+│       │   └── grub.cfg\
+│       └── kernel.bin\
+├── kernel\
+│   ├── boot.s\
+│   ├── driver.c\
+│   ├── driver.h\
+│   ├── kernel.c\
+│   ├── keyboard.c\
+│   ├── keyboard.h\
+│   ├── linker.ld\
+│   ├── reboot.h\
+│   ├── scheduler.c\
+│   ├── scheduler.h\
+│   ├── syscall.c\
+│   └── syscall.h\
+├── Makefile\
+├── mini-os.iso\
+├── minios_memory\
+│   ├── main.c\
+│   ├── memory_manager.c\
+│   ├── memory_manager.h\
+│   └── program.exe\
+└── README.md\
 
 ---
 

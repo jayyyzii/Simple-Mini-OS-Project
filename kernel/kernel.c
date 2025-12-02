@@ -43,7 +43,7 @@ void kernel_main(void) {
     init_driver();
     sys_clear_screen();
 
-    sys_print("=== Simulasi I/O 4KB Block (Mini-OS) ===\n\n");
+    sys_print("=== Simulasi I/O 4kB Block (Mini-OS) ===\n\n");
 
     sys_print("Default block size: ");
     sys_print_dec(BLOCK_SIZE);
@@ -133,8 +133,8 @@ void kernel_main(void) {
     sys_print("Read time total      : "); sys_print_dec(read_time); sys_print(" us\n");
     sys_print("Write latency /blok  : "); sys_print_dec(write_latency_us); sys_print(" us\n");
     sys_print("Read latency /blok   : "); sys_print_dec(read_latency_us); sys_print(" us\n");
-    sys_print("Write throughput     : "); sys_print_dec(write_throughput_kb); sys_print(" KB/s (approx)\n");
-    sys_print("Read throughput      : "); sys_print_dec(read_throughput_kb); sys_print(" KB/s (approx)\n");
+    sys_print("Write throughput     : "); sys_print_dec(write_throughput_kb); sys_print(" kB/s (approx)\n");
+    sys_print("Read throughput      : "); sys_print_dec(read_throughput_kb); sys_print(" kB/s (approx)\n");
 
 done:
     {

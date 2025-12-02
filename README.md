@@ -59,14 +59,16 @@ Simple-Mini-OS-Project \
 │   ├── memory_manager.c\
 │   ├── memory_manager.h\
 │   └── program.exe\
-└── README.md\
+└── README.md
 
 ---
 
-## [How to Build]
+## [Direct Download]
 
+## [Manual Build]
 
 0. **Dependencies**:
+   - `WSL` (Windows Subsystem for Linux)
    - `GCC` & `NASM` — untuk compile kernel
    - `LD` (linker) — untuk linking binary
    - `QEMU` (32-bit) — untuk menjalankan mini-OS

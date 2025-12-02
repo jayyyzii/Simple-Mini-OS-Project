@@ -29,4 +29,3 @@ SECTIONS {
     *(.bss*)
   }
 }
-

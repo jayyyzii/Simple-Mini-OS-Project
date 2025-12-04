@@ -92,6 +92,12 @@ Simple-Mini-OS-Project \
 
 ---
 
+### Rencana Pengembangan (Future Plan)
+
+Beberapa pengembangan yang bisa dilakukan pada proyek Mini OS ini di masa depan:
+- Menambah fitur sederhana seperti menu awal atau command kecil.
+- Menambahkan komentar pada kode untuk mempermudah pembelajaran. (Agar lebih informatif)
+
 ### *Notes
 
 *Mini-OS ini menggunakan GRUB sebagai bootloader.
